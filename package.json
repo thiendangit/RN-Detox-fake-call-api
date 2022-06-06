@@ -73,7 +73,7 @@
     "@typescript-eslint/parser": "4.10.0",
     "babel-jest": "26.6.3",
     "babel-loader": "8.2.2",
-    "detox": "19.3.0",
+    "detox": "19.7.0",
     "eslint": "7.15.0",
     "eslint-config-prettier": "7.0.0",
     "eslint-config-standard": "16.0.2",
@@ -125,7 +125,7 @@
         "type": "ios.simulator",
         "device": {
           "name": "iPhone 11",
-          "os": "iOS 13.2"
+          "os": "iOS 15.4"
         }
       },
       "ios.sim.release": {
@@ -134,7 +134,7 @@
         "type": "ios.simulator",
         "device": {
           "name": "iPhone 11",
-          "os": "iOS 13.2"
+          "os": "iOS 15.4"
         }
       }
     }
