@@ -28,4 +28,5 @@ describe("Example", () => {
     await element(by.id('demo-flatlist')).scrollTo('bottom');
     await element(by.id('demo-flatlist')).scrollTo('top');
   })
+
 })
