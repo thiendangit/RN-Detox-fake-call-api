@@ -1,6 +1,7 @@
 import { CharacterApi } from "../app/services/api/character-api"
 import { Character } from "../app/models/character/character"
 import { Environment } from "../app/models/environment"
+import MockAdapter from "axios-mock-adapter"
 
 function forEach(items, callback) {
   for (let index = 0; index < items.length; index++) {
@@ -33,4 +34,12 @@ test("get Characters", async () => {
   expect(result.kind).toEqual("ok")
   expect(result?.kind).not.toBeNull()
   expect(result.characters).not.toBeNull()
+})
+
+test("Mock get characters", async () => {
+  const env = new Environment()
+  await env.setup()
+  const mock = new MockAdapter((env.api.apisauce).axiosInstance)
+  console.log(mock)
+  // const characterApi = new CharacterApi()
 })
