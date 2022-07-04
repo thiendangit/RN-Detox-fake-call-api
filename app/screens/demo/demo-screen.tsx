@@ -168,6 +168,7 @@ export const DemoScreen: FC<StackScreenProps<NavigatorParamList, "demo">> = obse
             style={DEMO}
             textStyle={DEMO_TEXT}
             tx="demoScreen.demoList"
+            testID={"demo-list-button"}
             onPress={() => navigation.navigate("demoList")}
           />
           <Image source={logoIgnite} style={IGNITE} />
