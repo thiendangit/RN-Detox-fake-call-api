@@ -27,5 +27,6 @@ describe("Example", () => {
     await waitFor(element(by.id('demo-flatlist'))).toBeVisible().whileElement(by.id('item-20')).scroll(200, 'down');
     await element(by.id('demo-flatlist')).scrollTo('bottom');
     await element(by.id('demo-flatlist')).scrollTo('top');
+
   })
 })
