@@ -33,8 +33,6 @@ describe("Example", () => {
     // await element(by.id("demo-flatlist")).scrollTo("top")
   })
 
-  const adapter = require("detox/runners/jest/adapter")
-
   it("should submit successfully", async () => {
     let api = new Api()
     api.setup()
