@@ -50,7 +50,7 @@ export function Header(props: HeaderProps) {
         <Text style={[TITLE, titleStyle]} text={header} />
       </View>
       {rightIcon ? (
-        <Button preset="link" onPress={onRightPress}>
+        <Button preset="link" onPress={onRightPress} testID={'submit-character'}>
           <Icon icon={rightIcon} />
         </Button>
       ) : (

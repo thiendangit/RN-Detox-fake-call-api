@@ -40,6 +40,55 @@ test("Mock get characters", async () => {
   const env = new Environment()
   await env.setup()
   const mock = new MockAdapter((env.api.apisauce).axiosInstance)
-  console.log(mock)
-  // const characterApi = new CharacterApi()
+  // given
+  const users = {
+      results : [
+        {
+          "id": 1,
+          "name": "Rick Sanchez",
+          "status": "Alive",
+          "species": "Human",
+          "type": "",
+          "gender": "Male",
+          "origin": { "name": "Earth (C-137)", "url": "https://rickandmortyapi.com/api/location/1" },
+          "location": {
+            "name": "Earth (Replacement Dimension)",
+            "url": "https://rickandmortyapi.com/api/location/20"
+          },
+          "image": "https://rickandmortyapi.com/api/character/avatar/1.jpeg",
+          "episode": [
+            "https://rickandmortyapi.com/api/episode/1",
+            "https://rickandmortyapi.com/api/episode/2",
+            ],
+          "url": "https://rickandmortyapi.com/api/character/1",
+          "created": "2017-11-04T18:48:46.250Z"
+        },
+        {
+          "id": 2,
+          "name": "Rick Sanchez",
+          "status": "Alive",
+          "species": "Human",
+          "type": "",
+          "gender": "Male",
+          "origin": { "name": "Earth (C-137)", "url": "https://rickandmortyapi.com/api/location/1" },
+          "location": {
+            "name": "Earth (Replacement Dimension)",
+            "url": "https://rickandmortyapi.com/api/location/20"
+          },
+          "image": "https://rickandmortyapi.com/api/character/avatar/1.jpeg",
+          "episode": [
+            "https://rickandmortyapi.com/api/episode/1",
+            "https://rickandmortyapi.com/api/episode/2",
+          ],
+          "url": "https://rickandmortyapi.com/api/character/1",
+          "created": "2017-11-04T18:48:46.250Z"
+        }
+      ]
+  };
+  await mock.onGet('https://raw.githubusercontent.com/infinitered/ignite/master/data/rick-and-morty.json').reply(200, users);
+  const characterApi = new CharacterApi(env.api)
+  const charactersResult = await characterApi.getCharacters() as { kind: "ok"; characters: Character[] }
+  expect(charactersResult.kind).toEqual("ok")
+  expect(charactersResult?.kind).not.toBeNull()
+  expect(charactersResult.characters).not.toBeNull()
 })

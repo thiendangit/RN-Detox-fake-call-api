@@ -28,6 +28,11 @@ export const CharacterStoreModel = types
         __DEV__ && console.tron.log(result.kind)
       }
     },
+
+    submitCharacter: async () => {
+      const characterApi = new CharacterApi(self.environment.api)
+      return await characterApi.submitCharacter()
+    },
   }))
 
 type CharacterStoreType = Instance<typeof CharacterStoreModel>

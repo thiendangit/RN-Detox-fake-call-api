@@ -1,6 +1,6 @@
 import { ApiResponse } from "apisauce"
 import { Api } from "./api"
-import { GetCharactersResult } from "./api.types"
+import { GetCharactersResult, SubmitCharactersResult } from "./api.types"
 import { getGeneralApiProblem } from "./api-problem"
 
 const API_PAGE_SIZE = 50
@@ -29,6 +29,31 @@ export class CharacterApi {
       const characters = response.data.results
 
       return { kind: "ok", characters }
+    } catch (e) {
+      // __DEV__ && console.tron.log(e.message)
+      return { kind: "bad-data" }
+    }
+  }
+
+  async submitCharacter(): Promise<SubmitCharactersResult> {
+    try {
+      // make the api call
+      const response: ApiResponse<any> = await this.api.apisauce.get(
+        "https://jsonplaceholder.typicode.com/posts/1",
+        { amount: API_PAGE_SIZE },
+      )
+
+      console.log({response})
+
+      // the typical ways to die when calling an api
+      if (!response.ok) {
+        const problem = getGeneralApiProblem(response)
+        if (problem) return problem
+      }
+
+      const data = response.data
+
+      return { kind: "ok", message: data?.title }
     } catch (e) {
       // __DEV__ && console.tron.log(e.message)
       return { kind: "bad-data" }

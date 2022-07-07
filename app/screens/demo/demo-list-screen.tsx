@@ -57,33 +57,42 @@ export const DemoListScreen: FC<StackScreenProps<NavigatorParamList, "demoList">
       fetchData()
     }, [])
 
+    const onRightPress = async () => {
+      const result = await characterStore?.submitCharacter()
+      if (result?.kind === "ok") {
+        navigation.goBack()
+      }
+    }
+
     return (
-      <View testID="DemoListScreen" style={FULL}>
+      <View testID="DemoListScreen" style={FULL} >
         <GradientBackground colors={["#422443", "#281b34"]} />
-        <Screen style={CONTAINER} preset="fixed" backgroundColor={color.transparent}>
+        <Screen style={CONTAINER} preset="fixed" backgroundColor={color.transparent} >
           <Header
             headerTx="demoListScreen.title"
             leftIcon="back"
             onLeftPress={goBack}
             style={HEADER}
             titleStyle={HEADER_TITLE}
+            rightIcon={"bug"}
+            onRightPress={onRightPress}
           />
           <FlatList
             contentContainerStyle={FLAT_LIST}
             data={[...characters]}
-            testID={'demo-flatlist'}
+            testID={"demo-flatlist"}
             keyExtractor={(item) => String(item.id)}
             renderItem={({ item, index }) => (
-              <View style={LIST_CONTAINER} testID={`item-${index}`}>
+              <View style={LIST_CONTAINER} testID={`item-${index}`} >
                 <Image source={{ uri: item.image }} style={IMAGE} />
-                <Text style={LIST_TEXT}>
+                <Text style={LIST_TEXT} >
                   {item.name} ({item.status})
-                </Text>
-              </View>
+                </Text >
+              </View >
             )}
           />
-        </Screen>
-      </View>
+        </Screen >
+      </View >
     )
   },
 )
