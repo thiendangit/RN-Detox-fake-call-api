@@ -29,8 +29,8 @@ describe("Example", () => {
 
   it("should scroll to bottom and top", async () => {
     await waitFor(element(by.id("demo-flatlist"))).toBeVisible().whileElement(by.id("item-20")).scroll(200, "down")
-    // await element(by.id("demo-flatlist")).scrollTo("bottom")
-    // await element(by.id("demo-flatlist")).scrollTo("top")
+    await element(by.id("demo-flatlist")).scrollTo("bottom")
+    await element(by.id("demo-flatlist")).scrollTo("top")
   })
 
   it("should submit successfully", async () => {
