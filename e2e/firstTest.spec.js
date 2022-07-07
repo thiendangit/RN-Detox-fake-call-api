@@ -50,5 +50,4 @@ describe("Example", () => {
     await element(by.id("submit-character")).tap()
     await expect(element(by.id("DemoScreen"))).toBeVisible()
   })
-
 })
